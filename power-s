@@ -1,0 +1,5 @@
+cd path/to/your/local/power-science
+# скопируйте в эту папку все указанные файлы/папки из шаблона
+git add . 
+git commit -m "Добавил структуру проекта и первый шаблон главы"
+git push origin main
