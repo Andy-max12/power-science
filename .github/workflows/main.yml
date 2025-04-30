@@ -21,8 +21,12 @@ jobs:
           pdflatex main.tex
           pdflatex main.tex  # дважды для оглавления
 
-      - name: Upload PDF
-        uses: actions/upload-artifact@v2
+- name: Upload PDF
+  uses: actions/upload-artifact@v3
+  with:
+    name: main.pdf
+    path: main.pdf
+
         with:
           name: main.pdf
           path: main.pdf
