@@ -17,14 +17,13 @@ jobs:
           sudo apt update
           sudo apt install -y texlive-full
 
-      - name: Compile LaTeX document
+      - name: Compile PDF
         run: |
           pdflatex main.tex
-          pdflatex main.tex  # дважды для оглавления
+          pdflatex main.tex
 
       - name: Upload PDF
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: main.pdf
           path: main.pdf
-
