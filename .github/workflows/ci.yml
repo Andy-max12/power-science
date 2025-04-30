@@ -14,6 +14,8 @@ jobs:
 
       - name: Установить TeX Live
         uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
 
       - name: Скомпилировать PDF
         run: |
