@@ -1,0 +1,11 @@
+.gitignore
+main.tex
+style.sty
+bibliography.bib
+.github/
+    workflows/
+        ci.yml
+chapters/
+    chapter01.tex
+    (далее, по мере готовности: chapter02.tex, chapter03.tex и т. д.)
+figures/       ← пустая папка для иллюстраций (когда потребуется)
