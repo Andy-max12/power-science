@@ -12,11 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Установить TeX Live
+      - name: Сборка main.tex через LaTeX Action
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
 
-      - name: Скомпилировать PDF
-        run: |
-          latexmk -pdf -silent main.tex
