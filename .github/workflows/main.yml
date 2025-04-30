@@ -1,4 +1,4 @@
-name: Build PDF (no external actions)
+name: Build PDF
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Install TeX Live
@@ -23,18 +23,13 @@ jobs:
           pdflatex main.tex
           pdflatex main.tex
 
-      - name: Package PDF
+      - name: Archive PDF
         run: |
           mkdir output
-          cp main.pdf output/
-          tar -czf output.tar.gz output
-          echo "Done"
+          mv main.pdf output/
 
-      - name: Upload result
-        run: |
-          mkdir -p artifacts
-          cp output.tar.gz artifacts/
-        if: always()
-
-    outputs:
-      pdf: artifacts/output.tar.gz
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: main-pdf
+          path: output/
