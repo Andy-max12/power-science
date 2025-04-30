@@ -29,3 +29,12 @@ jobs:
           cp main.pdf output/
           tar -czf output.tar.gz output
           echo "Done"
+
+      - name: Upload result
+        run: |
+          mkdir -p artifacts
+          cp output.tar.gz artifacts/
+        if: always()
+
+    outputs:
+      pdf: artifacts/output.tar.gz
