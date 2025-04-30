@@ -1,16 +1,16 @@
-name: Build PDF
+name: Build PDF (no external actions)
 
 on:
-  workflow_dispatch:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Install TeX Live
@@ -23,8 +23,9 @@ jobs:
           pdflatex main.tex
           pdflatex main.tex
 
-      - name: Upload PDF
-        uses: actions/upload-artifact@v3
-        with:
-          name: main-pdf
-          path: main.pdf
+      - name: Package PDF
+        run: |
+          mkdir output
+          cp main.pdf output/
+          tar -czf output.tar.gz output
+          echo "Done"
